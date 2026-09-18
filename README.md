@@ -1,4 +1,5 @@
 # Gurmukhi Handwritten Character Classification using Naive Bayes
+#Team Members: Kiah Parekh A027, Sneha Purswani A034
 
 CIS + VCG project using image preprocessing, HOG features, zoning features and Gaussian Naive Bayes.
 
