@@ -20,9 +20,13 @@ To develop a Naive Bayes-based system for classifying handwritten Gurmukhi chara
 - Publish the Python implementation on GitHub.
 
 ### 4. Dataset
-State the exact public dataset used, its version, source, number of classes, number of samples and license/usage conditions.
 
-The HWR-Gurmukhi benchmark family includes HWR-Gurmukhi_1.1 (3,500 samples/35 classes), HWR-Gurmukhi_2.1 (5,600/56), and HWR-Gurmukhi_3.1 (7,000/35).
+The project uses a publicly available dataset of handwritten Gurmukhi numeral characters. The dataset contains 10 classes corresponding to the numerals 0–9 and provides separate training and testing directories containing grayscale character images.
+
+The original images are 32×32 pixels. The dataset is obtained automatically from the public source repository used by the project.
+
+Dataset source:
+https://github.com/siddharthapramanik771/Gurmukhi-Handwritten-Digit-Classification
 
 ### 5. System Requirements
 Hardware: laptop/computer with internet access and sufficient RAM.
