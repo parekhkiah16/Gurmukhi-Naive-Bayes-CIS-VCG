@@ -1,58 +1,151 @@
-# Gurmukhi Handwritten Character Classification using Naive Bayes
-#Team Members: Kiah Parekh A027, Sneha Purswani A034
+### Gurmukhi Handwritten Character Classification using Naive Bayes
+### CIS + VCG Project
 
-CIS + VCG project using image preprocessing, HOG features, zoning features and Gaussian Naive Bayes.
+Team Members:
+Kiah Parekh — A027
+Sneha Purswani — A034
 
-## Dataset
+### Project Overview
+This project develops a machine-learning system for classifying handwritten Gurmukhi numeral characters using a Gaussian Naive Bayes classifier.
 
-This runnable version uses a publicly accessible Gurmukhi handwritten numeral dataset:
+The system performs dataset exploration, image preprocessing, feature extraction using Histogram of Oriented Gradients (HOG) and 4×4 zoning, model training, evaluation and prediction of unseen handwritten samples.
 
+### Dataset
+
+The project uses a publicly available dataset of handwritten Gurmukhi numeral characters.
+
+Dataset source:
 https://github.com/siddharthapramanik771/Gurmukhi-Handwritten-Digit-Classification/archive/refs/heads/main.zip
 
-The source repository documents a dataset with separate `train` and `test` folders, 10 Gurmukhi numeral classes (0–9), and 32×32 grayscale images.
+The dataset contains:
 
-The Colab notebook downloads the dataset automatically, combines the labeled train/test folders for exploration, then performs a fresh stratified 80/20 split for the Naive Bayes experiment.
+10 numeral classes (0–9)
+Separate train and test directories
+32×32 grayscale handwritten images
 
-> Note: HWR-Gurmukhi_1.1 is a different 3,500-image/35-class benchmark documented in the literature. A verified direct public download endpoint for that exact benchmark could not be confirmed, so this repository uses the downloadable dataset above instead.
+The Colab notebook downloads the dataset automatically. The labeled images are explored and then used in a stratified 80:20 train/test split for the Naive Bayes experiment.
 
-## Colab
+### Methodology
 
-Open `notebook/Gurmukhi_Naive_Bayes_CIS_VCG.ipynb` in Google Colab and run the cells from top to bottom.
+The project follows the following workflow:
 
-The notebook:
-1. Downloads the dataset automatically.
-2. Explores the classes and images.
-3. Preprocesses images.
-4. Extracts HOG + zoning features.
-5. Performs an 80/20 stratified split.
-6. Trains Gaussian Naive Bayes.
-7. Reports accuracy, precision, recall and F1.
-8. Generates a confusion matrix.
-9. Demonstrates predictions on unseen test images.
-10. Lets you upload a new handwritten Gurmukhi numeral for prediction.
-11. Saves the trained model and output figures.
+Dataset → Exploration → Preprocessing → Feature Extraction → Train/Test Split → Gaussian Naive Bayes → Evaluation → Unseen Sample Prediction
 
-## Local execution
+1. Dataset Exploration
+The dataset is examined to identify the available classes, image samples and class distribution.
 
-```bash
+2. Image Preprocessing
+The images are:
+Converted to grayscale
+Contrast-normalized
+Resized to 64×64 pixels
+Normalized to values between 0 and 1
+
+3. Feature Extraction
+Two feature representations are used:
+
+HOG (Histogram of Oriented Gradients): captures local stroke and gradient direction information.
+4×4 Zoning: divides the image into 16 regions and calculates regional intensity information.
+
+The HOG and zoning features are concatenated to form the final feature vector.
+
+4. Classification
+A Gaussian Naive Bayes classifier is trained using the extracted feature vectors.
+
+5. Evaluation
+The classifier is evaluated using:
+Accuracy
+Macro Precision
+Macro Recall
+Macro F1-score
+Classification Report
+Confusion Matrix
+
+6. Unseen Sample Prediction
+After training, a separate handwritten Gurmukhi numeral can be uploaded to the system. The trained classifier processes the image and returns the predicted class along with the top class probabilities.
+
+### Results
+
+The evaluated Gaussian Naive Bayes classifier achieved the following results:
+
+Metric	Score
+Accuracy	0.9000
+Macro Precision	0.9150
+Macro Recall	0.9000
+Macro F1-score	0.9007
+
+The complete classification report and confusion matrix are available in the executed Colab notebook.
+
+### Google Colab Notebook
+
+The complete executed notebook is available at:
+notebook/Gurmukhi_Naive_Bayes_CIS_VCG.ipynb
+
+### The notebook contains:
+
+Dataset download
+Dataset exploration
+Class distribution analysis
+Sample image visualization
+Image preprocessing
+HOG and zoning feature extraction
+Stratified train/test split
+Gaussian Naive Bayes training
+Classification metrics
+Confusion matrix
+Prediction inspection
+Unseen handwritten numeral prediction
+Trained model saving
+Local Execution
+
+Create a virtual environment and install the required dependencies:
+
 python -m venv .venv
 source .venv/Scripts/activate
 pip install -r requirements.txt
+
+To train the model:
+
 python -m src.train
+
+### To predict a handwritten image:
 python -m src.predict --image path/to/image.png
-```
 
-## Project structure
-
-```text
-Gurmukhi_Naive_Bayes_CIS_VCG/
-├── notebook/
-├── src/
+### Project Structure
+Gurmukhi-Naive-Bayes-CIS-VCG/
+│
 ├── data/
-├── models/
-├── outputs/
+│   ├── DATASET_SOURCE.md
+│   └── raw/
+│
+├── notebook/
+│   └── Gurmukhi_Naive_Bayes_CIS_VCG.ipynb
+│
+├── src/
+│   ├── __init__.py
+│   ├── config.py
+│   ├── data_loader.py
+│   ├── features.py
+│   ├── predict.py
+│   ├── preprocessing.py
+│   └── train.py
+│
 ├── PROJECT_REPORT.md
 ├── README.md
 ├── requirements.txt
 └── .gitignore
-```
+
+### Technologies Used
+Python
+Google Colab
+NumPy
+Pandas
+Matplotlib
+Seaborn
+Scikit-learn
+Scikit-image
+Pillow
+Joblib
+
+### Conclusion
+This project demonstrates a complete classical machine-learning pipeline for handwritten Gurmukhi numeral classification. Image preprocessing and feature extraction using HOG and zoning are combined with Gaussian Naive Bayes to classify handwritten samples and evaluate the resulting model using standard classification metrics and a confusion matrix.
