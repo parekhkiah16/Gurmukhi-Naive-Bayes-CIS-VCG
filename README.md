@@ -112,28 +112,22 @@ python -m src.train
 python -m src.predict --image path/to/image.png
 
 ### Project Structure
-Gurmukhi-Naive-Bayes-CIS-VCG/
-│
-├── data/
-│   ├── DATASET_SOURCE.md
-│   └── raw/
-│
-├── notebook/
-│   └── Gurmukhi_Naive_Bayes_CIS_VCG.ipynb
-│
-├── src/
-│   ├── __init__.py
-│   ├── config.py
-│   ├── data_loader.py
-│   ├── features.py
-│   ├── predict.py
-│   ├── preprocessing.py
-│   └── train.py
-│
-├── PROJECT_REPORT.md
-├── README.md
-├── requirements.txt
-└── .gitignore
+└──gurmukhi-naive-bayes-cis-vcg/
+    ├── README.md
+    ├── PROJECT_REPORT.md
+    ├── requirements.txt
+    ├── data/
+    │   ├── DATASET_SOURCE.md
+    │   └── raw/
+    │       └── .gitkeep
+    └── src/
+        ├── __init__.py
+        ├── config.py
+        ├── data_loader.py
+        ├── features.py
+        ├── predict.py
+        ├── preprocessing.py
+        └── train.py
 
 ### Technologies Used
 Python
